@@ -22,7 +22,7 @@ install_type = node['kibana']['install_type']
 unless Chef::Config[:solo]
   es_server_results = search(:node, "roles:#{node['kibana']['es_role']} AND chef_environment:#{node.chef_environment}")
   unless es_server_results.empty?
-    node.set['kibana']['es_server'] = es_server_results[0]['ipaddress']
+    node.default['kibana']['es_server'] = es_server_results[0]['ipaddress']
   end
 end
 

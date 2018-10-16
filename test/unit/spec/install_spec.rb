@@ -7,19 +7,19 @@ describe 'kibana_lwrp::install' do
     let(:runner) { ChefSpec::ServerRunner.new(::UBUNTU_OPTS) }
     let(:node) { runner.node }
     let(:chef_run) do
-      # runner.node.set['logstash'] ...
-      runner.node.set['kibana']['user'] = 'kibanana'
-      runner.node.set['kibana']['install_dir'] = '/opt/kibanana'
-      runner.node.set['kibana']['install_type'] = 'file'
-      runner.node.set['kibana']['config_template'] = 'config.js.erb'
-      runner.node.set['kibana']['config_cookbook'] = 'kibana'
-      runner.node.set['kibana']['webserver'] = 'nginx'
-      runner.node.set['kibana']['es_server'] = '127.0.0.1'
-      runner.node.set['kibana']['nginx']['template'] = 'kibana-nginx.conf.erb'
-      runner.node.set['kibana']['nginx']['template_cookbook'] = 'kibana'
-      runner.node.set['kibana']['nginx']['enable_default_site'] = false
-      runner.node.set['kibana']['nginx']['install_method'] = 'package'
-      runner.node.set['kibana']['service']['options']['sv_timeout'] = 42
+      # runner.node.default['logstash'] ...
+      runner.node.default['kibana']['user'] = 'kibanana'
+      runner.node.default['kibana']['install_dir'] = '/opt/kibanana'
+      runner.node.default['kibana']['install_type'] = 'file'
+      runner.node.default['kibana']['config_template'] = 'config.js.erb'
+      runner.node.default['kibana']['config_cookbook'] = 'kibana'
+      runner.node.default['kibana']['webserver'] = 'nginx'
+      runner.node.default['kibana']['es_server'] = '127.0.0.1'
+      runner.node.default['kibana']['nginx']['template'] = 'kibana-nginx.conf.erb'
+      runner.node.default['kibana']['nginx']['template_cookbook'] = 'kibana'
+      runner.node.default['kibana']['nginx']['enable_default_site'] = false
+      runner.node.default['kibana']['nginx']['install_method'] = 'package'
+      runner.node.default['kibana']['service']['options']['sv_timeout'] = 42
       runner.node.automatic['memory']['total'] = '1024kB'
       runner.converge(described_recipe)
     end
